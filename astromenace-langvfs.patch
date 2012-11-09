@@ -1,0 +1,54 @@
+--- AstroMenaceSource/Main.cpp	2007-10-05 19:30:17.000000000 +0200
++++ AstroMenaceSource/Main.cpp	2007-10-05 19:32:55.000000000 +0200
+@@ -88,6 +88,7 @@
+ char ProgrammDir[MAX_PATH];
+ char VFSFileNamePath[MAX_PATH];
+ char VFSLangFileNamePath[MAX_PATH];
++char VFSLangFileNamePathEn[MAX_PATH];
+ // полное имя для файла с данными о игре
+ char DatFileName[MAX_PATH];
+ // для сохранения скриншотов
+@@ -234,6 +235,7 @@
+ 	ZeroMemory(DatFileName, sizeof(DatFileName));
+ 	ZeroMemory(VFSFileNamePath, sizeof(VFSFileNamePath));
+ 	ZeroMemory(VFSLangFileNamePath, sizeof(VFSLangFileNamePath));
++	ZeroMemory(VFSLangFileNamePathEn, sizeof(VFSLangFileNamePathEn));
+ 	ZeroMemory(ScreenshotDir, sizeof(ScreenshotDir));
+ 
+ 	// Получаем данные, где папка пользователя
+@@ -295,6 +297,9 @@
+ 
+ 	strcpy(VFSLangFileNamePath, ProgrammDir);
+ 	strcat(VFSLangFileNamePath, "gamelang.vfs");
++
++	strcpy(VFSLangFileNamePathEn, ProgrammDir);
++	strcat(VFSLangFileNamePathEn, "gamelang_en.vfs");
+ 
+ #elif __unix
+ 	// иним пути для юникса-линукса
+@@ -346,6 +351,9 @@
+ 	strcpy(VFSLangFileNamePath, ProgrammDir);
+ 	strcat(VFSLangFileNamePath, "gamelang.vfs");
+ 
++	strcpy(VFSLangFileNamePathEn, ProgrammDir);
++	strcat(VFSLangFileNamePathEn, "gamelang_en.vfs");
++
+ 	// укладываем в нужном месте (где 100% дають создавать) файл с настройками
+ 	strcpy(DatFileName, homeval);
+ 	strcat(DatFileName, "/.astromenace");
+@@ -522,9 +530,12 @@
+ 	}
+ 	if (vw_OpenVFS(VFSLangFileNamePath) != 0)
+ 	{
+-		fprintf(stderr, "gamelang.vfs file not found or corrupted.\n");
+-		ReleaseGameOneCopy();
+-		return 0;
++		if (vw_OpenVFS(VFSLangFileNamePathEn) != 0)
++		{
++			fprintf(stderr, "gamelang.vfs or gamelang_en.vfs files not found or corrupted.\n");
++			ReleaseGameOneCopy();
++			return 0;
++		}
+ 	}
+ 	printf("\n");
+ 

@@ -1,0 +1,20 @@
+--- AstroMenaceSource/Main.cpp	2008-06-06 12:31:13.000000000 -0500
++++ AstroMenaceSource/Main.cpp	2008-06-06 12:31:13.000000000 -0500
+@@ -337,11 +337,12 @@
+ #ifdef DATADIR
+ 		strcpy(ProgrammDir, DATADIR "/");
+ #else
+- 		strcpy(ProgrammDir, argv[0]);
+- 		char* s = strrchr(ProgrammDir,'/');
+- 		if (s) s[0]=0x0;
+- 		const char *Fi = "/";
+- 		strcat( ProgrammDir, Fi );
++		strncat(ProgrammDir, "/usr/share/astromenace/", strlen("/usr/share/astromenace/"));
++ 		//strcpy(ProgrammDir, argv[0]);
++ 		//char* s = strrchr(ProgrammDir,'/');
++ 		//if (s) s[0]=0x0;
++ 		//const char *Fi = "/";
++ 		//strcat( ProgrammDir, Fi );
+ #endif
+ 	}
+ 
