@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Astromenace
+Exec=astromenace
+Comment=3D Space Shooter
+Icon=astromenace
+Terminal=false
+Categories=Game;ArcadeGame;
+StartupNotify=false
