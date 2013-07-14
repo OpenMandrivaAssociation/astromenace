@@ -1,32 +1,28 @@
 %define oname openastromenace
-#useless empty debugempy debug 
-%define debug_package	%{nil}
 
-Name:		astromenace
-Version:	1.3.1
-Release:	1
 Summary:	Hardcore 3D space shooter with spaceship upgrade possibilities
+Name:		astromenace
+Version:	1.3.2
+Release:	2
+License:	GPLv3+
 Group:		Games/Arcade
-License:	GPLv3
-URL:		http://www.viewizard.com/
+Url:		http://www.viewizard.com/
 Source0:	http://sourceforge.net/projects/openastromenace/files/%{version}/%{name}-src-%{version}.tar.bz2
 Source1:	astromenace.desktop
-#upstream patch
-Patch0:		astromenace-1.3.1.patch
 BuildRequires:	cmake
-BuildRequires:	pkgconfig(gl)
-BuildRequires:	pkgconfig(glu)
-BuildRequires:	pkgconfig(sdl)
-BuildRequires:	pkgconfig(openal)
 BuildRequires:	pkgconfig(freealut)
 BuildRequires:	pkgconfig(freetype2)
+BuildRequires:	pkgconfig(gl)
+BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(ogg)
+BuildRequires:	pkgconfig(openal)
+BuildRequires:	pkgconfig(sdl)
 BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	pkgconfig(xinerama)
 BuildRequires:	jpeg-devel
 BuildRequires:	desktop-file-utils
 Provides:	%{oname} = %{version}-%{release}
-Requires:	astromenace-data = %{version}
+Requires:	%{name}-data = %{version}
 
 %description
 Space is a vast area, an unbounded territory where it seems there is a 
@@ -58,15 +54,10 @@ chmod -x License.txt
 chmod -x ReadMe.txt
 chmod -x gpl-3.0.txt
 
-%patch0 -p0
-
 %build
-[[ -d build ]] && rm -r build
-mkdir build && cd build
-
-cmake .. \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DDATADIR=/usr/share/astromenace
+%cmake \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DDATADIR=/usr/share/astromenace
 %make
 ./AstroMenace --pack --rawdata=../RAW_VFS_DATA --dir=.
 
