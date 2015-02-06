@@ -3,7 +3,7 @@
 Summary:	Hardcore 3D space shooter with spaceship upgrade possibilities
 Name:		astromenace
 Version:	1.3.2
-Release:	2
+Release:	3
 License:	GPLv3+
 Group:		Games/Arcade
 Url:		http://www.viewizard.com/
