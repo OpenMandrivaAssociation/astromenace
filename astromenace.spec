@@ -2,7 +2,7 @@
 
 Summary:	Hardcore 3D space shooter with spaceship upgrade possibilities
 Name:		astromenace
-Version:	1.4.1
+Version:	1.4.2
 Release:	1
 License:	GPLv3+
 Group:		Games/Arcade
