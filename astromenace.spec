@@ -6,7 +6,7 @@ Version:	1.4.2
 Release:	1
 License:	GPLv3+
 Group:		Games/Arcade
-Url:		http://www.viewizard.com/
+Url:		https://www.viewizard.com/
 Source0:	https://github.com/viewizard/astromenace/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:	cmake ninja
 BuildRequires:	pkgconfig(freealut)
